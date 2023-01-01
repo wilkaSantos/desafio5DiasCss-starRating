@@ -1,0 +1,105 @@
+/* = = =  GLOBAL = = = */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+
+    --bg-hero: #e5e5e5;
+    --bg-card: rgba(255, 255, 255, .04);
+    --c-title: #c8cfd2ce;
+    --c-star-disable: #495057;
+    --c-star-enable: #ffd60a;
+
+    --ff-title: 'Roboto', sans-serif;
+}
+
+/* = = =  HERO = = = */
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../image/wallpaper.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    width: 20rem;
+    height: 10rem;
+    background: var(--bg-card);
+    border-radius: 2rem;
+
+    border: .5px solid var(--bg-card);
+    box-shadow: 20px 40px 90px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(.1rem);
+}
+
+.cardTitle{
+    font-family: var(--ff-title);
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: .1rem;
+    color: var(--c-title);
+    margin-top: 1.2rem;
+}
+
+.wrappedStar{
+    position: relative;
+    width: 100%;
+    height: 40%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    transform: rotateY(180deg);
+
+}
+
+.wrappedStar input{
+    display: none;
+}
+
+.wrappedStar label{
+    display: block;
+    cursor: pointer;
+    width: 2.3rem;
+}
+
+.wrappedStar label::before{
+    position: absolute;
+    content: '\f005';
+    font-family: fontAwesome;
+    display: block;
+    font-size: 2.2rem;
+    color: var(--c-star-disable);
+}
+
+.wrappedStar label::after{
+    position: absolute;
+    content: '\f005';
+    font-family: fontAwesome;
+    display: block;
+    font-size: 2.2rem;
+    color: var(--c-star-enable);
+    opacity: 0;
+    text-shadow: 0 .2rem .3rem var(--c-star-enable);
+
+    transition: .5s ease;
+}
+
+.wrappedStar label:hover::after,
+.wrappedStar label:hover ~ label::after,
+.wrappedStar input:checked ~ label::after{
+    opacity: 1;
+}
